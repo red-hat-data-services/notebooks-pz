@@ -64,7 +64,7 @@ USER root
 WORKDIR /opt/app-root/bin
 
 # Install useful OS packages
-RUN --mount=type=bind,source=base-images/utils,target=/utils,rw \
+RUN --mount=type=bind,source=base-images/utils,target=/utils,ro \
     bash /utils/dnf-helper.sh install jq unixODBC postgresql git-lfs libsndfile libxcrypt-compat
 
 COPY --chown=1001:0 ${DATASCIENCE_SOURCE_CODE}/setup-elyra.sh ${DATASCIENCE_SOURCE_CODE}/setup-kale.sh ${DATASCIENCE_SOURCE_CODE}/utils ./utils/
